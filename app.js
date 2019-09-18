@@ -2,16 +2,19 @@ const express = require("express");
 const fs = require("fs");
 const app = express();
 
+// INITIALIZE EXPRESS SERVER TO LISTEN TO A CERTAIN PORT
 const port = process.env.PORT || 80;
-
-// app.use('/views', express.static('public'));
-
-app.listen(port, ()=>{
+app.listen(port, () => {
   console.log(`Running on port: ${port}`);
 });
-app.set('view engine', 'ejs');
-app.use(express.static(__dirname + '/static'));
 
+// SET RENDERING METHOD
+app.set("view engine", "ejs");
+
+// MAKE STATIC FOLDER AVAILABLE
+app.use(express.static(__dirname + "/static"));
+
+// ROUTES
 app.get("/", (req, res) => {
-  res.render('index');
+  res.render("index");
 });
