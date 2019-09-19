@@ -14,9 +14,10 @@ Simple code editor web app with real time preview & save progress.
 ## Installation guide
 * Make sure you have nodejs, npm installed
 * Run the command below to install dependencies  
-`npm i` 
-* (Optional) Run the command below to install developer dependencies  
-`npm i --only=dev`
+`npm i`
+## Installation guide (developer mode)
+* Run the command below to install developer dependencies  
+`npm i && npm i --only=dev`
 ## Run guide
 * Run the below command to start the application  
 `npm run start`
