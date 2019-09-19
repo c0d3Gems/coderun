@@ -1,10 +1,12 @@
 const express = require("express");
 const fs = require("fs");
 const app = express();
+const http = require('http').createServer(app);
+const io = require('socket.io')(http);
 
 // INITIALIZE EXPRESS SERVER TO LISTEN TO A CERTAIN PORT
 const port = process.env.PORT || 80;
-app.listen(port, () => {
+http.listen(port, () => {
   console.log(`Running on port: ${port}`);
 });
 
@@ -17,4 +19,9 @@ app.use(express.static(__dirname + "/static"));
 // ROUTES
 app.get("/", (req, res) => {
   res.render("index");
+});
+
+// SOCKET OPERATIONS
+io.on('connection', function(socket){
+  console.log('a user connected');
 });

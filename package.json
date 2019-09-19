@@ -12,7 +12,8 @@
   "dependencies": {
     "ace-code-editor": "^1.2.3",
     "ejs": "^2.7.1",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "socket.io": "^2.2.0"
   },
   "devDependencies": {
     "nodemon": "^1.19.2"
