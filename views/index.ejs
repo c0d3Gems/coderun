@@ -16,10 +16,22 @@
       <h1>[CodeRun]</h1>
     </header>
     <div class="content">
-      <div class="firstHalf">
-        <iframe id="fakebrowser" title="Preview" src="https://bezole.com"></iframe>
+      <div class="secondHalf">
+        <textarea class="editor"></textarea>
+        <textarea class="editor"></textarea>
       </div>
-      <div class="secondHalf"></div>
+      <div class="firstHalf">
+        <div id="fakebrowser" title="Preview">
+          <div class="fkb-header">
+            <div class="fkb-button" title="Close"></div>
+            <div class="fkb-button maximize" title="Maximize"></div>
+            <div class="fkb-button hide" title="Hide"></div>
+            <div class="fkb-title-container">Fakebrowser</div>
+          </div>
+          <iframe class="fkb-view" src="http://bezole.com"></iframe>
+          <div class="fkb-footer"></div>
+        </div>
+      </div>
     </div>
     <footer>
       Made by Cosmin Aruxandei with

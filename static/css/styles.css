@@ -2,7 +2,7 @@
   color: white;
   font-family: sans-serif;
 }
-body{
+body {
   background-color: #ececec;
 }
 header {
@@ -17,13 +17,13 @@ header {
   box-sizing: border-box;
   padding: 10px;
 }
-header h1{ 
+header h1 {
   margin: 0;
   position: relative;
   top: 50%;
   transform: translateY(-50%);
 }
-footer{
+footer {
   position: fixed;
   bottom: 0;
   width: 100%;
@@ -36,11 +36,11 @@ footer{
   left: 50%;
   transform: translateX(-50%);
 }
-footer img{
+footer img {
   height: 20px;
   vertical-align: middle;
 }
-.content{
+.content {
   width: 100%;
   max-width: 1920px;
   height: 100%;
@@ -57,27 +57,79 @@ footer img{
   top: 0;
   transform: translateX(-50%);
 }
-.firstHalf, .secondHalf{
+.firstHalf,
+.secondHalf {
   resize: horizontal;
   background-color: darkred;
   height: 100%;
   width: 50%;
-  float: left;
+  float: right;
   box-sizing: border-box;
   padding: 20px;
 }
 
-#fakebrowser{
+#fakebrowser {
   border-radius: 6px;
-  background-color: lightgray;
+  background-color: #3c3b43;
   height: 100%;
   width: 100%;
   border-width: 0;
-  overflow: auto;
   resize: both;
   max-width: calc(200% + 40px);
   max-height: 100%;
   min-width: 180px;
   min-height: 320px;
+  overflow: hidden;
+}
+#fakebrowser iframe {
+  width: 100%;
+  border: 0;
+  height: calc(100% - 40px);
   overflow: auto;
+  position: relative;
+  top: 0;
+  resize: none;
+}
+#fakebrowser .fkb-header {
+  height: 30px;
+  background-color: #3d3b3b;
+}
+#fakebrowser .fkb-header .fkb-button {
+  border-radius: 50%;
+  height: 15px;
+  width: 15px;
+  margin: 0 2.5px;
+  background-color: #ff3141;
+  display: inline-block;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 5px;
+  cursor: pointer;
+}
+#fakebrowser .fkb-header .fkb-button.maximize {
+  background-color: #e9c300;
+}
+#fakebrowser .fkb-header .fkb-button.hide {
+  background-color: #00ce29;
+}
+#fakebrowser .fkb-header .fkb-title-container {
+  display: inline-block;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  margin: 0 10px;
+  width: calc(100% - 100px);
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  height: 18px;
+  vertical-align: bottom;
+  font-size: 12pt;
+}
+.secondHalf .editor{
+  display: block;
+  width: 100%;
+  resize: vertical;
+  border-radius: 6px;
 }
