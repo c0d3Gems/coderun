@@ -1,9 +1,16 @@
 # CodeRun
-Simple code editor web app with real time preview & save progress. 
-# Features integration with:
+Simple code editor web app with real time preview & save progress.
+# Features
+* real time preview of the written code
+* real time development progress save.
+* error reports
+* syntax highlighting
+* autocompletion 
+# Used dependencies:
 * nodejs
 * express
 * Web Sockets (socket.io)
+* ace-code-editor
 # Installation guide
 * Make sure you have nodejs, npm installed
 * Run the command below to install dependencies  
