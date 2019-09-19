@@ -1,8 +1,8 @@
 const express = require("express");
 const fs = require("fs");
 const app = express();
-const http = require('http').createServer(app);
-const io = require('socket.io')(http);
+const http = require("http").createServer(app);
+const io = require("socket.io")(http);
 
 // INITIALIZE EXPRESS SERVER TO LISTEN TO A CERTAIN PORT
 const port = process.env.PORT || 80;
@@ -22,6 +22,9 @@ app.get("/", (req, res) => {
 });
 
 // SOCKET OPERATIONS
-io.on('connection', function(socket){
-  console.log('a user connected');
+io.on("connection", function(socket) {
+  console.log("a user connected");
+  socket.on("disconnect", function() {
+    console.log("user disconnected");
+  });
 });
