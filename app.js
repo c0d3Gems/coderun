@@ -5,7 +5,7 @@ const http = require("http").createServer(app);
 const io = require("socket.io")(http);
 
 // INITIALIZE EXPRESS SERVER TO LISTEN TO A CERTAIN PORT
-const port = process.env.PORT || 80;
+const port = process.env.PORT || 8080;
 http.listen(port, () => {
   console.log(`Running on port: ${port}`);
 });

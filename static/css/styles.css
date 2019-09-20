@@ -127,9 +127,23 @@ footer img {
   vertical-align: bottom;
   font-size: 12pt;
 }
-.secondHalf .editor{
+.secondHalf .editorContainer {
+  border-radius: 6px;
+  background-color: #3c3b43;
+  height: 100%;
+  width: 100%;
+  border-width: 0;
+  max-width: calc(200% + 40px);
+  max-height: 100%;
+  min-width: 180px;
+  min-height: 320px;
+  overflow: hidden;
+}
+.secondHalf .editor {
   display: block;
   width: 100%;
   resize: vertical;
-  border-radius: 6px;
+  /* border-radius: 6px; */
+  height: 100%;
+  max-height: 50%;
 }

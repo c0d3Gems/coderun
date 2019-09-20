@@ -17,8 +17,10 @@
     </header>
     <div class="content">
       <div class="secondHalf">
-        <textarea class="editor"></textarea>
-        <textarea class="editor"></textarea>
+        <div class="editorContainer">
+          <div class="editor" id="editor1"></div>
+          <div class="editor" id="editor2"></div>
+        </div>
       </div>
       <div class="firstHalf">
         <div id="fakebrowser" title="Preview">
@@ -34,9 +36,23 @@
       </div>
     </div>
     <footer>
-      Made by Cosmin Aruxandei with
-      <img src="/img/heart.png" alt="❤" /> in 2019
+      Made with <img src="/img/heart.png" alt="❤" /> by
+      <a target="_blank" href="http://cosminaruxandei.com">Cosmin Aruxandei</a>
+      in 2019
     </footer>
+    <script src="/ace/ace.js" type="text/javascript" charset="utf-8"></script>
+    <script>
+      var editor1 = ace.edit("editor1");
+      var editor2 = ace.edit("editor2");
+      editor1.setTheme("ace/theme/monokai");
+      editor1.session.setMode("ace/mode/html");
+      editor1.insert(
+        "<!DOCTYPE html>\n<html>\n\t<head>\n\t\t<title>Some basic title</title>\n\t</head>\n</html>"
+      );
+      editor2.setTheme("ace/theme/monokai");
+      editor2.session.setMode("ace/mode/javascript");
+      editor2.insert("// your javascript code here...\n");
+    </script>
     <script src="/socket.io/socket.io.js"></script>
     <script>
       var socket = io();

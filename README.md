@@ -6,7 +6,7 @@ Simple code editor web app with real time preview & save progress.
 * error reports
 * syntax highlighting
 * autocompletion 
-## Used dependencies:
+## Dependencies:
 * nodejs
 * express
 * Web Sockets (socket.io)
