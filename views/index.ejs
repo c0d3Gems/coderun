@@ -40,19 +40,31 @@
       <a target="_blank" href="http://cosminaruxandei.com">Cosmin Aruxandei</a>
       in 2019
     </footer>
+    <!-- ACE CONFIGURATIONS & IMPORT -->
     <script src="/ace/ace.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/ace/ext-language_tools.js"></script>
     <script>
+      ace.require("ace/ext/language_tools");
       var editor1 = ace.edit("editor1");
       var editor2 = ace.edit("editor2");
+      // editor 1
       editor1.setTheme("ace/theme/monokai");
       editor1.session.setMode("ace/mode/html");
       editor1.insert(
         "<!DOCTYPE html>\n<html>\n\t<head>\n\t\t<title>Some basic title</title>\n\t</head>\n</html>"
       );
+      editor1.setOptions({
+        enableBasicAutocompletion: true
+      });
+      // editor 2
       editor2.setTheme("ace/theme/monokai");
       editor2.session.setMode("ace/mode/javascript");
       editor2.insert("// your javascript code here...\n");
+      editor2.setOptions({
+        enableBasicAutocompletion: true
+      });
     </script>
+    <script></script>
     <script src="/socket.io/socket.io.js"></script>
     <script>
       var socket = io();

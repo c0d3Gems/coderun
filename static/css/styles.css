@@ -45,7 +45,7 @@ footer img {
   max-width: 1920px;
   height: 100%;
   /* background-color: purple; */
-  background-color: black;
+  /* background-color: black; */
   position: fixed;
   z-index: -1;
   left: 0;
@@ -60,14 +60,13 @@ footer img {
 .firstHalf,
 .secondHalf {
   resize: horizontal;
-  background-color: darkred;
+  /* background-color: darkred; */
   height: 100%;
   width: 50%;
   float: right;
   box-sizing: border-box;
   padding: 20px;
 }
-
 #fakebrowser {
   border-radius: 6px;
   background-color: #3c3b43;
@@ -80,6 +79,7 @@ footer img {
   min-width: 180px;
   min-height: 320px;
   overflow: hidden;
+  box-shadow: 0px 0 40px 0px black;
 }
 #fakebrowser iframe {
   width: 100%;
@@ -138,6 +138,10 @@ footer img {
   min-width: 180px;
   min-height: 320px;
   overflow: hidden;
+  box-shadow: 0px 0 40px 0px black;
+}
+.secondHalf .editorContainer {
+  z-index: 0;
 }
 .secondHalf .editor {
   display: block;
