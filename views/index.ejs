@@ -30,18 +30,24 @@
             <div class="fkb-button hide" title="Hide"></div>
             <div class="fkb-title-container" id="fbTitle">Fakebrowser</div>
           </div>
-          <iframe class="fkb-view" id="frame"></iframe>
+          <iframe title="Fakebrowser" class="fkb-view" id="frame"></iframe>
           <div class="fkb-footer"></div>
         </div>
       </div>
     </div>
     <footer>
       Made with <img src="/img/heart.png" alt="❤" /> by
-      <a target="_blank" href="http://cosminaruxandei.com">Cosmin Aruxandei</a>
+      <a target="_blank" rel="noopener" href="http://cosminaruxandei.com"
+        >Cosmin Aruxandei</a
+      >
       in 2019
     </footer>
     <!-- ACE CONFIGURATIONS & IMPORT -->
-    <script src="/ace/ace.js" type="text/javascript" charset="utf-8"></script>
+    <script
+      src="https://pagecdn.io/lib/ace/1.4.2/ace.js"
+      integrity="sha256-rfN9xU0ELcvTsc3WUaKlvSVEfzLvFCyl+ID09aieASo="
+      crossorigin="anonymous"
+    ></script>
     <script src="/ace/ext-language_tools.js"></script>
     <script>
       ace.require("ace/ext/language_tools");
@@ -88,7 +94,7 @@
           frame.src = url;
           var title = frame.contentDocument.title || "Fakebrowser";
           document.querySelector("#fbTitle").innerHTML = title;
-        }, 300);
+        }, 0);
       };
       editor1.getSession().on("change", function() {
         update();

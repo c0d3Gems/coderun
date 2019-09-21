@@ -21,6 +21,10 @@ app.get("/", (req, res) => {
   res.render("index");
 });
 
+app.get("/p", (req, res) => {
+  // res.render("index");
+});
+
 // SOCKET OPERATIONS
 io.on("connection", function(socket) {
   console.log("a user connected");
