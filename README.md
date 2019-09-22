@@ -10,7 +10,7 @@ Simple code editor web app with real time preview & save progress.
 * nodejs
 * express
 * Web Sockets (socket.io)
-* ace-code-editor
+* codemirror
 ## Installation guide
 * Make sure you have nodejs, npm installed
 * Run the command below to install dependencies  
