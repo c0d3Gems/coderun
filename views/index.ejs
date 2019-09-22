@@ -43,67 +43,6 @@
       in 2019
     </footer>
     <!-- ACE CONFIGURATIONS & IMPORT -->
-    <script
-      src="https://pagecdn.io/lib/ace/1.4.2/ace.js"
-      integrity="sha256-rfN9xU0ELcvTsc3WUaKlvSVEfzLvFCyl+ID09aieASo="
-      crossorigin="anonymous"
-    ></script>
-    <script src="/ace/ext-language_tools.js"></script>
-    <script>
-      ace.require("ace/ext/language_tools");
-      var editor1 = ace.edit("editor1");
-      var editor2 = ace.edit("editor2");
-      // editor 1
-      editor1.setTheme("ace/theme/vibrant_ink");
-      editor1.session.setMode("ace/mode/html");
-      editor1.getSession().setUseWrapMode(true);
-      editor1.setOptions({
-        enableBasicAutocompletion: true
-      });
-      editor1.insert(
-        `<!DOCTYPE html>
-<html>
-  <head>
-    <title>Some basic title</title>
-  </head>
-  <body>
-      <header></header>
-      <div class="content">Sample text here</div>
-      <footer></footer>
-  </body>
-</html>`
-      );
-      // editor 2
-      editor2.setTheme("ace/theme/vibrant_ink");
-      editor2.session.setMode("ace/mode/javascript");
-      editor2.getSession().setUseWrapMode(true);
-      editor2.insert("// your javascript code here...\n");
-      editor2.setOptions({
-        enableBasicAutocompletion: true
-      });
-      var update = function() {
-        setTimeout(function() {
-          var code =
-            (editor1.getValue() || "") +
-            "<script>" +
-            (editor2.getValue() || "") +
-            "<\/script>";
-          var blob = new Blob([code], { type: "text/html" });
-          var url = URL.createObjectURL(blob);
-          var frame = document.querySelector("#frame");
-          frame.src = url;
-          var title = frame.contentDocument.title || "Fakebrowser";
-          document.querySelector("#fbTitle").innerHTML = title;
-        }, 0);
-      };
-      editor1.getSession().on("change", function() {
-        update();
-      });
-      editor2.getSession().on("change", function() {
-        update();
-      });
-      update();
-    </script>
     <script></script>
     <script src="/socket.io/socket.io.js"></script>
     <script>

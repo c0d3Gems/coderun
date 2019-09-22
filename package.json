@@ -10,6 +10,7 @@
   "author": "Cosmin Andrei Aruxandei",
   "license": "MIT",
   "dependencies": {
+    "codemirror": "^5.49.0",
     "ejs": "^2.7.1",
     "express": "^4.17.1",
     "socket.io": "^2.2.0"
