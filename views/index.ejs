@@ -44,21 +44,47 @@
     </footer>
     <!-- CODEMIRROR CONFIGURATIONS & IMPORT -->
     <script src="/cm/lib/codemirror.js"></script>
-    <link rel="stylesheet" href="cm/lib/codemirror.css" />
+    <link rel="stylesheet" href="/cm/lib/codemirror.css" />
+    <link rel="stylesheet" href="/cm/theme/material-darker.css"/>
+    <script src="/cm/mode/xml/xml.js"></script>
+    <script src="/cm/mode/htmlmixed/htmlmixed.js"></script>
+    <script src="/cm/mode/css/css.js"></script>
+    <script src="/cm/addon/edit/matchbrackets.js"></script>
     <script src="/cm/mode/javascript/javascript.js"></script>
     <script>
-      var myCodeMirror = CodeMirror(document.querySelector("#editor1"), {
-  value: "function myScript(){return 100;}\n",
-  mode:  "javascript"
-});
-      var myCodeMirror = CodeMirror(document.querySelector("#editor2"), {
-  value: "function myScript(){return 100;}\n",
-  mode:  "javascript"
-});
+      var editor1 = CodeMirror(document.querySelector("#editor1"), {
+        value: "<html>\n\t<head>\n\t\t<title>Some title</title>\n\t</head>\n</html>",
+        mode: "text/html",
+        lineNumbers: true,
+        lineWrapping: true,
+        matchBrackets: true,
+        autofocus: true,
+        theme: "material-darker"
+      });
+      var editor2 = CodeMirror(document.querySelector("#editor2"), {
+        value: "// Your JavaScript code here...\nfunction func(){ return 100; }",
+        mode: "javascript",
+        lineNumbers: true,
+        lineWrapping: true,
+        matchBrackets: true,
+        theme: "material-darker"
+      });
+      editor1.on("change", function(cm, change){
+        console.log(cm.getValue());
+      });
+      editor2.on("change", function(cm, change){
+        console.log(cm.getValue());
+      });
     </script>
     <script src="/socket.io/socket.io.js"></script>
     <script>
       var socket = io();
     </script>
+    <style>
+      .CodeMirror {
+        height: 100% !important;
+        font-size: 10pt;
+      }
+    </style>
   </body>
 </html>
