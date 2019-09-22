@@ -42,8 +42,20 @@
       >
       in 2019
     </footer>
-    <!-- ACE CONFIGURATIONS & IMPORT -->
-    <script></script>
+    <!-- CODEMIRROR CONFIGURATIONS & IMPORT -->
+    <script src="/cm/lib/codemirror.js"></script>
+    <link rel="stylesheet" href="cm/lib/codemirror.css" />
+    <script src="/cm/mode/javascript/javascript.js"></script>
+    <script>
+      var myCodeMirror = CodeMirror(document.querySelector("#editor1"), {
+  value: "function myScript(){return 100;}\n",
+  mode:  "javascript"
+});
+      var myCodeMirror = CodeMirror(document.querySelector("#editor2"), {
+  value: "function myScript(){return 100;}\n",
+  mode:  "javascript"
+});
+    </script>
     <script src="/socket.io/socket.io.js"></script>
     <script>
       var socket = io();
