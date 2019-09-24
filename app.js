@@ -22,17 +22,15 @@ app.use(express.static(__dirname + "/static"));
 // ROUTES
 app.get("/", (req, res) => {
   let projectId = req.query.pid;
-  if(!projectId){
+  if (!projectId) {
+    // ProjectID not provided, so we must create a new one
     repository.createId();
-    repository.redirectToSession(res);
-  }else{
+    repository.validateId("new", repository.redirectToSession(res));
+  } else {
+    // ProjectID provided, so we stream its current contents after we validate it
     repository.parseId(projectId);
     res.render("index");
   }
-});
-
-app.get("/p", (req, res) => {
-  // res.render("index");
 });
 
 // SOCKET OPERATIONS
