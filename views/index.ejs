@@ -42,6 +42,10 @@
       >
       in 2019
     </footer>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+      var socket = io();
+    </script>
     <!-- CODEMIRROR CONFIGURATIONS & IMPORT -->
     <script src="/cm/lib/codemirror.js"></script>
     <link rel="stylesheet" href="/cm/lib/codemirror.css" />
@@ -71,6 +75,12 @@
         matchBrackets: true,
         theme: "material-darker"
       });
+      var store = {
+        editor1: 
+            "<html>\n                <head>\n                    <title>Some title</title>\n                </head>\n            </html>",
+        editor2: 
+            "// Your JavaScript code here...\n                function func(){ return 100; }"
+      };
       var content =
         document.querySelector(".CodeMirror").CodeMirror.getValue() +
         "\n<script>" +
@@ -78,15 +88,15 @@
         "<\/script>";
       console.log(content);
       editor1.on("change", function(cm, change) {
-        console.log(cm.getValue());
+        store.editor1 = cm.getValue();
+        console.log(store);
+        socket.emit("save", store);
       });
       editor2.on("change", function(cm, change) {
-        console.log(cm.getValue());
+        store.editor2 = cm.getValue();
+        console.log(store);
+        socket.emit("save", store);
       });
-    </script>
-    <script src="/socket.io/socket.io.js"></script>
-    <script>
-      var socket = io();
     </script>
     <style>
       .CodeMirror {

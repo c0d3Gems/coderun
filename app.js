@@ -87,6 +87,9 @@ io.on("connection", function(socket) {
 
   // socket.on("registerNewUser", function() {
   // });
+  socket.on("save", (store)=>{
+    console.log(store);
+  })
   socket.on("streamFileContent", function() {});
   socket.on("submitChange", function(change) {});
   socket.on("disconnect", function() {

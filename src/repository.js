@@ -42,17 +42,13 @@ const repository = {
     fs.writeFile(
         path,
         JSON.stringify({
-            editor1: {
-              content: `<html>
+            editor1: `<html>
                 <head>
                     <title>Some title</title>
                 </head>
-            </html>`
-            },
-            editor2: {
-              content: `// Your JavaScript code here...
+            </html>`,
+            editor2:  `// Your JavaScript code here...
                 function func(){ return 100; }`
-            }
           })
           ,(err)=>{if(err) throw err; cbk && cbk();}
       );
