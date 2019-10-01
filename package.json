@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node app.js",
-    "dev": "nodemon app.js",
+    "dev": "node app.js",
     "empty-sessions": "rm ./sessions/*"
   },
   "author": "Cosmin Andrei Aruxandei",
@@ -15,8 +15,5 @@
     "ejs": "^2.7.1",
     "express": "^4.17.1",
     "socket.io": "^2.2.0"
-  },
-  "devDependencies": {
-    "nodemon": "^1.19.2"
   }
 }

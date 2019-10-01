@@ -44,7 +44,8 @@
     </footer>
     <script src="/socket.io/socket.io.js"></script>
     <script>
-      var socket = io();
+      var projectId = window.location.href.split("pid=")[1];
+      var socket = io.connect("/" + projectId);
     </script>
     <!-- CODEMIRROR CONFIGURATIONS & IMPORT -->
     <script src="/cm/lib/codemirror.js"></script>
@@ -56,6 +57,8 @@
     <script src="/cm/addon/edit/matchbrackets.js"></script>
     <script src="/cm/mode/javascript/javascript.js"></script>
     <script>
+      var frame = document.getElementById("frame");
+      var fbTitle = document.getElementById("fbTitle");
       var editor1 = CodeMirror(document.querySelector("#editor1"), {
         value:
           "<html>\n\t<head>\n\t\t<title>Some title</title>\n\t</head>\n</html>",
@@ -76,26 +79,50 @@
         theme: "material-darker"
       });
       var store = {
-        editor1: 
-            "<html>\n                <head>\n                    <title>Some title</title>\n                </head>\n            </html>",
-        editor2: 
-            "// Your JavaScript code here...\n                function func(){ return 100; }"
+        editor1:
+          "<html>\n                <head>\n                    <title>Some title</title>\n                </head>\n            </html>",
+        editor2:
+          "// Your JavaScript code here...\n                function func(){ return 100; }"
       };
       var content =
         document.querySelector(".CodeMirror").CodeMirror.getValue() +
         "\n<script>" +
         document.querySelectorAll(".CodeMirror")[1].CodeMirror.getValue() +
         "<\/script>";
-      console.log(content);
-      editor1.on("change", function(cm, change) {
+        
+      var showBlob = function(){
+        var blob = new Blob([store.editor1+"<script>"+store.editor2+"<\/script>"], {type: "text/html"});
+        frame.src = URL.createObjectURL(blob);
+        fbTitle.innerHTML = "Fakebrowser";
+        setTimeout(function(){
+          if(frame.contentDocument.title)
+            fbTitle.innerHTML = frame.contentDocument.title;
+        }, 0);
+      }
+      editor1.on("keyup", function(cm, change) {
         store.editor1 = cm.getValue();
-        console.log(store);
-        socket.emit("save", store);
+        socket.send(projectId, store);
+        showBlob();
       });
-      editor2.on("change", function(cm, change) {
+      editor2.on("keyup", function(cm, change) {
         store.editor2 = cm.getValue();
-        console.log(store);
-        socket.emit("save", store);
+        socket.send(projectId, store);
+        showBlob();
+      });
+      socket.on("sync", function(msg) {
+        var resp = JSON.parse(msg);
+        if (resp) {
+          if (resp.editor1 !== store.editor1) {
+            store.editor1 = resp.editor1;
+            editor1.setValue(store.editor1);
+          }
+          if (resp.editor2 !== store.editor2) {
+            store.editor2 = resp.editor2;
+            editor2.setValue(store.editor2);
+          }
+          // create blob, update iframe.
+          showBlob();
+        }
       });
     </script>
     <style>

@@ -1,5 +1,5 @@
 // repository file related actions
-'use strict';
+"use strict";
 const fs = require("fs");
 const repository = {
   id: null,
@@ -25,7 +25,7 @@ const repository = {
     fs.access(path, fs.F_OK, (err, cbk) => {
       if (err) {
         if (state !== "new") {
-            exists = true;
+          exists = true;
           // repository.validateId("new");
         } else {
           console.log(`[VALIDATED NEW PID]: ${JSON.stringify(repository.id)}`);
@@ -38,23 +38,49 @@ const repository = {
     repository.id = id;
     console.log(`[PARSED PID]: ${repository.id}`);
   },
-  createFile: (path, cbk)=>{
+  createFile: (path, cbk) => {
     fs.writeFile(
-        path,
-        JSON.stringify({
-            editor1: `<html>
+      path,
+      JSON.stringify({
+        editor1: `<html>
                 <head>
                     <title>Some title</title>
                 </head>
             </html>`,
-            editor2:  `// Your JavaScript code here...
+        editor2: `// Your JavaScript code here...
                 function func(){ return 100; }`
-          })
-          ,(err)=>{if(err) throw err; cbk && cbk();}
-      );
+      }),
+      err => {
+        if (err) throw err;
+        cbk && cbk();
+      }
+    );
   },
-  readFile: {},
-  updateFile: {},
-  deleteFile: {}
+  readFile: (cbk) => {
+    const fileName = `${repository.id}.json`;
+    const path = `./sessions/${fileName}`;
+    // console.log(`READING FILE: ${path}`);
+    fs.readFile(path, 'utf8', (err, data)=>{
+      if (err) throw err;
+      cbk(data);
+    });
+  },
+  updateFile: (projectId, data, cbk) => {
+    const fileName = `${projectId}.json`;
+    const path = `./sessions/${fileName}`;
+    // console.log(`WRITING FILE: ${path}`);
+    // console.log(data);
+    fs.writeFile(path, JSON.stringify(data), err => {
+      if (err) throw err;
+      cbk();
+    });
+  },
+  deleteFile: () => {
+    const fileName = `${repository.id}.json`;
+    const path = `./sessions/${fileName}`;
+    fs.unlink(path, err => {
+      if(err) throw err;
+    });
+  }
 };
 module.exports = repository;
