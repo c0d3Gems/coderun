@@ -34,10 +34,10 @@ app.get("/", (req, res) => {
     // SOCKET OPERATIONS
     io.of(`${repository.id}`).on("connection", function(socket) {
 
+      const sync = (msg) => socket.broadcast.emit('sync', msg);
+      repository.readFile(sync);
       socket.on("message", (projectId, store) => {
         // console.log(store);
-        const sync = (msg) => socket.broadcast.emit('sync', msg);
-        
         repository.updateFile(projectId, store, sync);
         repository.readFile(sync);
       });
